@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../components/head.ejs')  %> 
+<body class="bg-gray-50">
+    <%- include('../components/nav.ejs') %> 
+    <div class="tail-container mt-10">
+      <div class="flex flex-wrap -mx-5">
+      <div class="w-full md:w-3/12 p-5">
+         <%- include('../components/sidebar.ejs')  %> 
+      </div>
+      <div class="w-full md:w-9/12 p-5">
+          <div class="bg-white p-6 rounded">
+              <form action="change-picture-post" method="POST" enctype="multipart/form-data">
+                     <div class="mb-3">
+                         <h3 class="heading">update picture</h3>
+                     </div>
+                     <div class="mb-3">
+                      <label for="image" class="custom-label">eg profile.jpg...</label>
+                      <input type="file" name="image" id="image" class="custom-image">
+                    </div>
+                      <div class="mb-3">
+                          <input type="submit" value="save image" class="btn btn-default">
+                      </div>
+              </form>
+        </div>
+      </div>
+      </div>
+      <!-- close row -->
+    </div>
+    <!-- close container -->
+    <script>
+        const image = document.getElementById('image');
+        const label = document.querySelector('.custom-label')
+        image.addEventListener('change', function(e) {
+            console.log(e.target.files)
+            label.innerHTML = e.target.files[0].name
+        })
+    </script>
+</body>
+</html>

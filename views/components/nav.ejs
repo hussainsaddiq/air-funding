@@ -1,0 +1,31 @@
+
+
+<div class="bg-white w-full h-[70px]">
+    <nav class="max-w-screen-lg mx-auto h-[70px] flex items-center justify-between px-5">
+        <ul class="">
+            <li class="">
+                <a href="/" class="logo">
+                    <span><i class="bi bi-boxes"></i></span><span class="ml-2 text-lg font-semibold">v</span><span>funding</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="flex">
+
+
+            <% if(auth) { %> 
+                <li>
+                    <a href="/logout" class="capitalize font-medium text-gray-700">logout</a>
+                </li>
+                
+                <% } else { %> 
+                    <li>
+                        <a href="/register" class="capitalize font-medium text-gray-700">register</a>
+                    </li>
+                    <li class="ml-5">
+                        <a href="/login" class="capitalize font-medium text-gray-700">login</a>
+                    </li>
+                <% } %> 
+        </ul>
+    </nav>
+</div>
+

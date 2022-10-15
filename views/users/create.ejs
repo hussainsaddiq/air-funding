@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../components/head.ejs')  %> 
+<% let titleError = '', amountError = '', startError = '', endError = '', categoryError = '', descriptionError = '', imageError = '', fileError = '';
+   if(errors.length > 0) {
+                errors.forEach((error) => {
+                  console.log(error)
+                    if(error.name === 'title') {
+                        titleError = error.msg;
+                    }
+                    if(error.name === 'amount') {
+                        amountError = error.msg;
+                    }
+                    if(error.name === 'start_date') {
+                      startError = error.msg;
+                  }
+                  if(error.name === 'end_date') {
+                    endError = error.msg;
+                }
+                if(error.name === 'category') {
+                  categoryError = error.msg;
+              }
+              if(error.name === 'description') {
+                descriptionError = error.msg;
+            }
+            if(error.name === 'doc_1') {
+                imageError = error.msg;
+            }
+            if(error.name === 'doc_2') {
+                fileError = error.msg;
+            }
+                })
+            }
+%> 
+<body class="bg-gray-50">
+    <%- include('../components/nav.ejs') %> 
+    <div class="tail-container mt-10">
+      <div class="flex flex-wrap -mx-5">
+      <div class="w-full md:w-3/12 p-5">
+        <%- include('../components/sidebar.ejs')  %> 
+      </div>
+      <div class="w-full md:w-9/12 p-5">
+          <div class="bg-white p-5 rounded">
+            <h1 class="heading">create project</h1>
+           <form class="flex flex-wrap -mx-4" method="post" action="/create-project" enctype="multipart/form-data">
+            <div class="w-full lg:w-6/12 p-4">
+                <label for="title" class="label">project title</label>
+                <input type="text" name="title" id="title" class="<%= titleError ? 'input border-rose-600 border bg-rose-50' : 'input' %>" placeholder="Project title..." value="<%= fields.title ? fields.title: '' %>">    
+             <span class="error capitalize"><%= titleError %></span>
+            </div>
+            <div class="w-full lg:w-6/12 p-4">
+              <label for="amount" class="label">target amount</label>
+                <input type="number" name="amount" id="amount" class="<%= amountError ? 'input border-rose-600 border bg-rose-50' : 'input' %>"  placeholder="Amount target..." value="<%= fields.amount ? fields.amount: '' %>">    
+                <span class="error capitalize"><%= amountError %></span>
+            </div>
+            <div class="w-full lg:w-6/12 p-4">
+              <label for="start-date" class="label">start date</label>
+              <input type="date" name="start_date" id="start-date" class="<%= startError ? 'input border-rose-600 border bg-rose-50' : 'input' %>" placeholder="Amount target..." value="<%= fields.start_date ? fields.start_date: '' %>">    
+              <span class="error capitalize"><%= startError %></span>
+          </div>
+          <div class="w-full lg:w-6/12 p-4">
+            <label for="end-date" class="label">end date</label>
+            <input type="date" name="end_date" id="end-date" class="<%= endError ? 'input border-rose-600 border bg-rose-50' : 'input' %>" placeholder="Amount target..." value="<%= fields.end_date ? fields.end_date: '' %>">    
+            <span class="error capitalize"><%= endError %></span>
+        </div>
+        <div class="w-full lg:w-6/12 p-4">
+          <label for="doc-1" class="label">Cover image</label>
+          <input type="file" name="doc_1" id="doc-1" class="<%= imageError ? 'input border-rose-600 border bg-rose-50' : 'input' %>" placeholder="Amount target...">  
+          <span class="error capitalize"><%= imageError %></span>  
+      
+      </div>
+      <div class="w-full lg:w-6/12 p-4">
+        <label for="doc-2" class="label">document</label>
+        <input type="file" name="doc_2" id="doc-2" class="<%= fileError ? 'input border-rose-600 border bg-rose-50' : 'input' %>" placeholder="Amount target...">    
+        <span class="error capitalize"><%= fileError %></span>  
+    
+    </div>
+    <div class="w-full p-4">
+      <label for="categories" class="label">categories</label>
+      <select name="category" id="categories" class="<%= categoryError ? 'input border-rose-600 border bg-rose-50' : 'input ' %>" value="<%= fields.category ? fields.categroy: '' %>">
+        <option value="">Select Category</option>
+        <option value="education">Education</option>
+        <option value="medical">Medical</option>
+        <option value="disaster">Disaster</option>
+
+      </select>  
+      <span class="error capitalize"><%= categoryError %></span> 
+  
+  </div>
+  <div class="w-full p-4">
+    <label for="description" class="label">description</label>
+    <textarea id="description" name="description" class="<%= descriptionError ? 'input border-rose-600 border bg-rose-50' : 'input' %>" value="<%= fields.description ? fields.description: '' %>" cols="30" rows="5" placeholder="Project details..."><%= fields.description ? fields.description: '' %></textarea>   
+
+</div>
+<div class="w-full p-4">
+  <input type="submit" value="create project" class="btn btn-default">
+</div>
+
+</form>
+          </div>
+      </div>
+      </div>
+      <!-- close row -->
+    </div>
+    <!-- close container -->
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../components/head.ejs')  %> 
+
+<body class="bg-gray-50">
+    <%- include('../components/nav.ejs') %> 
+    <div class="tail-container mt-10">
+      <div class="flex flex-wrap -mx-5">
+      <div class="w-full md:w-3/12 p-5">
+        <%- include('../components/sidebar.ejs')  %> 
+      </div>
+      <div class="w-full md:w-9/12 p-5">
+          <div class="bg-white p-5 rounded">
+            <a href="/projects">
+                <i class="fa-solid fa-arrow-left text-gray-500"></i>
+            </a>
+           <div class="flex flex-wrap -mx-6">
+            <div class="w-full sm:w-6/12 p-6">
+                <img src="<%= `/assets/images/${project.image}`  %> " class="w-full h-[200px] object-cover" alt="">
+            </div>
+            <div class="w-full sm:w-6/12 p-6">
+                <h1 class="text-lg font-medium text-gray-700"><%= project.title  %> </h1>
+                <div class="flex justify-between mt-2">
+                    <span class="capitalize ">start date</span>
+                    <span class="font-medium text-sm"><%= moment(project.startDate).format('MMMM Do YYYY');  %> </span>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <span class="capitalize ">end
+                         date</span>
+                    <span class="font-medium text-sm"><%= moment(project.endDate).format('MMMM Do YYYY');  %> </span>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <span class="capitalize ">target amount</span>
+                    <span class="font-medium text-sm">
+                        <%= (project.amount).toLocaleString('en-US', {
+                            style: 'currency',
+                            currency: 'pkr',
+                          });  %>
+                    </span>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <span class="capitalize ">status</span>
+                    <span class="font-medium text-sm">
+                        <% if(project.status === 0) {   %> <span class="status bg-orange-600">under review</span> <% } else if(project.status === 1) { %> <span class="status bg-emerald-600">live</span> <% } else if(project.status === 2) {%> <span class="status bg-rose-600">rejected</span> <% } %>
+                    </span>
+                </div>
+            </div>
+            <div class="w-full p-6">
+                <h1 class="text-base font-medium capitalize mb-2">description</h1>
+                <p><%= project.description  %> </p>
+            </div>
+           </div>
+          </div>
+      </div>
+      </div>
+      <!-- close row -->
+    </div>
+    <!-- close container -->
+    
+    <script src="../assets/js/footer.js"></script>
+</body>
+</html>

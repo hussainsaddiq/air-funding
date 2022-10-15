@@ -1,0 +1,12 @@
+.heading {
+    @apply text-xl font-semibold capitalize;
+}
+.error {
+    @apply text-rose-600 font-medium text-sm mt-1;
+}
+.tail-container {
+    @apply max-w-screen-lg mx-auto px-5;
+}
+.status {
+    @apply block px-3 py-2 rounded-lg text-center text-xs text-white capitalize font-medium;
+}

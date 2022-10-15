@@ -1,0 +1,50 @@
+<div class="max-w-screen-lg mx-auto mt-10 px-5">
+    <div class="flex">
+        <div class="w-full md:w-6/12">
+<form action="/createUser" class="form form bg-white p-8 rounded-md" method="POST">
+    <div class="mb-5">
+        <h1 class="heading">sign up</h1>
+        <p class="mt-3 text-sm">By continuing, you are setting up a airFunding account and agree to our User Agreement and Privacy Policy.</p>
+            <%
+            let nameError = '', emailError = '', passwordError = '', confirmError = '';
+            if(errors.length > 0) {
+                errors.forEach((error) => {
+                    if(error.param === 'name') {
+                        nameError = error.msg;
+                    }
+                    if(error.param === 'email') {
+                        emailError = error.msg;
+                    }
+                    if(error.param === 'password') {
+                        passwordError = error.msg;
+                    }
+                    if(error.param === 'confirmPassword') {
+                        confirmError = error.msg;
+                    }
+                })
+            }
+            %>
+    </div>
+    <div class="mb-5">
+        <input type="text" name="name" class="input <%= nameError ? 'border-red' : ''  %>" placeholder="Name..." value="<%= fields.name ? fields.name  : '' %>">
+        <span class="error"><%= nameError; %></span>
+    </div>
+    <div class="mb-5">
+        <input type="email" name="email" class="input <%= emailError ? 'border-red' : ''  %>" placeholder="Email..." value="<%= fields.email ? fields.email  : '' %>" />
+        <span class="error"><%= emailError; %></span>
+    </div>
+    <div class="mb-5">
+        <input type="password" name="password" class="input <%= passwordError ? 'border-red' : ''  %>" placeholder="Create password..." value="<%= fields.password ? fields.password  : '' %>">
+        <span class="error"><%= passwordError; %></span>
+    </div>
+    <div class="mb-5">
+        <input type="password" name="confirmPassword" class="input <%= confirmError ? 'border-red' : ''  %>"placeholder="Conform password..." value="<%= fields.confirmPassword ? fields.confirmPassword  : '' %>">
+        <span class="error"><%= confirmError; %></span>
+    </div>
+    <div class="group">
+        <input type="submit" value="sign up &rarr;" class="btn btn-default">
+    </div>
+</form>
+        </div>
+    </div>
+</div>

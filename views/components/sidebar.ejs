@@ -1,0 +1,24 @@
+<div class="bg-white rounded">
+    <div class="p-5">
+    <% if(!user.photo) { %>
+      <div class="profile-avator"><%= user.name[0]  %> </div>
+  <% } else { %> 
+        <div class="w-[80px] h-[80px] overflow-hidden m-auto"><img class="w-full h-full object-cover rounded-full" src="<%= `../assets/images/${user.photo}` %> " alt=""></div>
+    <% } %> 
+</div>
+    <span class="profile-name py-3 px-4 text-sm font-medium capitalize"><%= user.name  %> </span>
+    <ul class="">
+        
+            <a href="/create" class="capitalize font-medium text-sm py-3 px-4 hover:bg-indigo-600 hover:text-white transition duration-700 block">create</a>
+            <a href="/projects" class="capitalize font-medium text-sm py-3 px-4 hover:bg-indigo-600 hover:text-white transition duration-700 block">projects</a>
+        
+            <a href="/change-picture" class="capitalize font-medium text-sm py-3 px-4 hover:bg-indigo-600 hover:text-white transition duration-700 block">change picture</a>
+        
+     
+            <a href="/change_password" class="capitalize font-medium text-sm py-3 px-4 hover:bg-indigo-600 hover:text-white transition duration-700 block">change password</a>
+        
+
+            <a href="" class="capitalize font-medium text-sm py-3 px-4 hover:bg-indigo-600 hover:text-white transition duration-700 block">donations</a>
+        
+    </ul>
+</div>
