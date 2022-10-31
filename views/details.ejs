@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('components/head.ejs')  %> 
+<body class="bg-gray-50">
+    <%- include('components/nav.ejs')  %> 
+  
+    <div class="max-w-screen-lg mx-auto my-10">
+        <div class="flex flex-wrap -mx-5 items-start ">
+            <div class="w-full md:w-6/12 lg:w-8/12 p-5">
+                <div class="w-full h-[350px]">
+                    <img src="./assets/images/13.jpg" class="w-full h-full object-cover" alt="">
+                </div>
+            </div>
+            <div class="w-full md:w-6/12 lg:w-4/12 p-5 ">
+                <div class="bg-white rounded p-4">
+                <div class="flex flex-wrap -mx-2 justify-between">
+                    <div class="w-full sm:w-6/12 p-2">
+                        <span class="block text-sm text-gray-600 capitalize">collected amount</span>
+                        <span class="text-lg font-bold text-gray-600">34000.00</span>
+                    </div>
+                    <div class="w-full sm:w-6/12 p-2 text-right">
+                        <span class="block text-sm text-gray-600 capitalize">target amount</span>
+                        <span class="text-lg font-bold text-gray-600">56000.00</span>
+                    </div>
+                </div>
+                <h1 class="mt-3 text-gray-500 text-lg">Ramaing days are 20</h1>
+                <p class="mt-2">This project has finished.
+                </p>
+                <div class="mt-3">
+                   <form action="/create-checkout-session" method="post">
+                    <div class="mb-3">
+                        <input type="number" name="amount" class="input" placeholder="Enter amount">
+                    </div>
+                    <input type="submit" value="pay now" class="btn btn-default w-full">
+                   </form>
+                </div>
+            </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>

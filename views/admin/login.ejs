@@ -24,6 +24,7 @@
                
                <form action="/loginUser?adminOption=true" method="post" class="w-full sm:w-8/12 md:w-6/12 lg:w-5/12">
                 <h1 class="mb-3 capitalize text-base font-medium">admin login</h1>
+                <p class="mb-3">Enter your email and password to begin admin login process.</p>
                  <div class="mb-5">
                     <input type="email" name="email" class="<%= emailError ? 'input border-rose-600 border bg-rose-50' : 'input' %>" placeholder="Your email">
                     <span class="error"><%= emailError; %></span>
