@@ -33,7 +33,7 @@
                                               });  %> </td>
                                             <td class="font-medium text-gray-700 capitalize"><%= project.category  %> </td>
                                             <td><% if(project.status === 0) {   %> <span class="status bg-orange-600">under review</span> <% } else if(project.status === 1) { %> <span class="status bg-emerald-600">live</span> <% } else if(project.status === 2) {%> <span class="status bg-rose-600">rejected</span> <% } %>   </td>
-                                            <td><a href="<%= `project/${project._id}` %> " class="btn btn-default py-1 text-sm px-3">details</a></td>
+                                            <td><a href="<%= `details/${project._id}` %> " class="btn btn-default py-1 text-sm px-3">details</a></td>
                                         </tr>
                                     <% }) %> 
                                     

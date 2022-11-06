@@ -69,11 +69,21 @@ module.exports.loginUser = (req, res) => {
                         }
                         
                     } else {
-                        res.render('auth/login', {title: 'login', auth: false, errors: [{param: 'password', msg: `password is not matched!`}], fields: req.body})
+                        if(adminOption) { 
+                            res.render('admin/admin-dashboard', {title: 'login', auth: false, errors: [{param: 'password', msg: `password is not matched!`}], fields: req.body, projects: []})
+                        } else {
+                            res.render('auth/login', {title: 'login', auth: false, errors: [{param: 'password', msg: `password is not matched!`}], fields: req.body})
+                        }
+                        
                     }
                 })
             } else {
-                res.render('auth/login', {title: 'login', auth: false, errors: [{param: 'email', msg: `${email} is not found!`}], fields: req.body})
+                if(adminOption) {
+                    res.render('admin/admin-dashboard', {title: 'login', auth: false, errors: [{param: 'email', msg: `${email} is not found!`}], fields: req.body, projects: []})
+                } else {
+                    res.render('auth/login', {title: 'login', auth: false, errors: [{param: 'email', msg: `${email} is not found!`}], fields: req.body})
+                }
+                
             }
         }).catch(function(error) {
             console.log(error.message)

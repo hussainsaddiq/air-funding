@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../components/head.ejs')  %> 
+<body>
+    <div class="max-w-screen-xl mx-auto my-10">
+        <div class="flex flex-wrap -mx-4">
+            <div class="w-full md:w-3/12 p-4">
+               <%- include('../components/adminList.ejs') %> 
+               </div>
+                </div>
+                <div class="w-full md:w-9/12 p-4">
+                    <div class="bg-white p-5 rounded border">
+                   
+                            <h1 class="text-2xl font-medium"><%= project.title  %> </h1>
+                <div class="my-2">
+                    <span class="text-gray-400 capitalize">amount</span>
+                    <h2 class="text-xl font-medium "><%= project.amount  %> </h2>
+                </div>
+                <div class="mb-2 flex justify-between">
+                    <a href="<%= `/assets/images/${project.file}`  %> " target="_blank" class="btn btn-default">view document</a>
+                    <% if(project.status === 0) {  %>
+                        <div>
+                            <a href="" class="btn btn-default bg-orange-600">aprove</a>
+                            <a href="<%= `/reject/${project._id}`  %> " class="btn btn-default bg-rose-600">reject</a>
+                        </div>
+                        <% } %>  
+                </div>
+                <p class="text-lg leading-[26px]"><%= project.description  %> </p>
+                        </div>
+                        <div class="w-full md:w-6/12 p-4">
+                          <img src="<%= `/assets/images/${project.image}`  %> " alt="">
+                        </div>
+                     </div>
+                  
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/footer.js"></script>
+</body>
+</html>
