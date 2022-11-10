@@ -1,5 +1,6 @@
 const express = require("express");
 const env = require("dotenv");
+const session = require("express-session")
 const jwtDecode = require("jwt-decode")
 const cookieParser = require("cookie-parser")
 const homeRoutes = require("./routes/homeRoutes")
@@ -20,6 +21,12 @@ app.use(cookieParser())
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 5000;
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  }))
 // all routes
 app.use(homeRoutes);
 app.use((req, res, next) => {

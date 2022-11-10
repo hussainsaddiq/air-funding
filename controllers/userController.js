@@ -59,8 +59,9 @@ module.exports.loginUser = (req, res) => {
                     if(result) {
                         const token = jwt.sign({id: response._id}, jwtSecret, {expiresIn: '7d'})
                         const admin = response.admin;
-                        console.log(admin);
+                        console.log('admin option: ', admin);
                         if(admin) {
+                            console.log('You are admin');
                             res.cookie("admin", token, {maxAge: 7 * 24 * 60 * 60 * 1000, httpOnly: true});
                             res.redirect('/admin-dashboard');
                         } else {
@@ -70,7 +71,7 @@ module.exports.loginUser = (req, res) => {
                         
                     } else {
                         if(adminOption) { 
-                            res.render('admin/admin-dashboard', {title: 'login', auth: false, errors: [{param: 'password', msg: `password is not matched!`}], fields: req.body, projects: []})
+                            res.render('admin/login', {title: 'login', auth: false, errors: [{param: 'password', msg: `password is not matched!`}], fields: req.body, projects: []})
                         } else {
                             res.render('auth/login', {title: 'login', auth: false, errors: [{param: 'password', msg: `password is not matched!`}], fields: req.body})
                         }
@@ -79,7 +80,7 @@ module.exports.loginUser = (req, res) => {
                 })
             } else {
                 if(adminOption) {
-                    res.render('admin/admin-dashboard', {title: 'login', auth: false, errors: [{param: 'email', msg: `${email} is not found!`}], fields: req.body, projects: []})
+                    res.render('admin/login', {title: 'login', auth: false, errors: [{param: 'email', msg: `${email} is not found!`}], fields: req.body, projects: []})
                 } else {
                     res.render('auth/login', {title: 'login', auth: false, errors: [{param: 'email', msg: `${email} is not found!`}], fields: req.body})
                 }

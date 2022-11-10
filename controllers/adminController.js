@@ -23,17 +23,21 @@ module.exports.details = async (req, res) => {
     }
 }
 module.exports.reject = async (req, res) => {
-       const {id} = req.params;
-        res.render('admin/reject',{title: 'reject', id})
+       const {id, num} = req.params;
+        res.render('admin/reject',{title: 'reject', id, num})
 }
 module.exports.message = async (req, res) => {
     const {message} = req.body;
-    const {id} = req.query;
+    const {id, status} = req.query;
     try {
-        const response = await ProjectModel.findOneAndUpdate({_id: id}, {status: 2});
+        const response = await ProjectModel.findOneAndUpdate({_id: id}, {status: parseInt(status), message});
         res.render('admin/admin-dashboard',{title: 'all projects', auth: false,projects: []})
     } catch (error) {
         console.log(error.message);
         
     }
+}
+module.exports.logout = (req, res) => {
+    res.clearCookie('admin');
+    res.redirect('/admin-login-page');
 }

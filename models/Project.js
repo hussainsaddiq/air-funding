@@ -36,7 +36,10 @@ const projectSchema = Schema({
         type: Number,
         default: 0
     },
-    donations: [{ type: Types.ObjectId, ref: "product" },],
-    user: {type: Types.ObjectId, ref: 'user'}
+    message: {
+        type: String
+    },
+    donations: [{ type: Types.ObjectId, ref: "donation" },],
+    // user: {type: Types.ObjectId, ref: 'user'}
 }, {timestamps: true})
 module.exports = model('project',projectSchema);

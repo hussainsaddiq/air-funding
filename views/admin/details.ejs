@@ -20,8 +20,8 @@
                     <a href="<%= `/assets/images/${project.file}`  %> " target="_blank" class="btn btn-default">view document</a>
                     <% if(project.status === 0) {  %>
                         <div>
-                            <a href="" class="btn btn-default bg-orange-600">aprove</a>
-                            <a href="<%= `/reject/${project._id}`  %> " class="btn btn-default bg-rose-600">reject</a>
+                            <a href="<%= `/reject/${project._id}/1`  %> " class="btn btn-default bg-orange-600">aprove</a>
+                            <a href="<%= `/reject/${project._id}/2`  %> " class="btn btn-default bg-rose-600">reject</a>
                         </div>
                         <% } %>  
                 </div>

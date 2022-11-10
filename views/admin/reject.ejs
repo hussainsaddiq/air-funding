@@ -10,7 +10,7 @@
                 </div>
                 <div class="w-full md:w-9/12 p-4">
                     <div class="bg-white p-5 rounded border">
-                     <form action="<%= `/reject?id=${id}`  %> " method="post">
+                     <form action="<%= `/reject?id=${id}&status=${num}`  %> " method="post">
                         <label for="" class="capitalize block mb-1.5">write message</label>
                         <input type="text" name="message" placeholder="Write message..." class="input">
                         <div class="mt-3">
