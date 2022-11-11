@@ -8,23 +8,58 @@
         <h1 class="heading">all projects</h1>
         <div class="flex flex-wrap -mx-5">
             <% if(projects.length > 0 ) { %> 
+                 
                 <% projects.forEach(project => {  %> 
-                    <div class="w-full sm:w-6/12 md:w-4/12 lg:w-3/12 p-5">
-                        <a href="<%= `/project-d/${project._id}` %> ">
-                            <div class="w-full h-[150px] overflow-hidden relative">
-                                <img src="<%= `/assets/images/${project.image}`  %> " class="w-full h-full object-cover rounded" alt="">
-                                <span class="absolute top-4 right-4 bg-orange-600 rounded text-xs px-3 py-1 text-white font-medium capitalize">funded</span>
-                            </div>
-                            <a href="<%= `/project-d/${project._id}` %> " class="text-base font-medium text-gray-800 leading-[21px] mt-3 block">
-                               <%= project.title  %> 
-                              </a>
-                              <span class="block mt-2 capitalize text-gray-500 text-sm font-medium"><%= project.category  %> </span>
-                              <div class="flex justify-between mt-2">
-                                <span class="font-medium text-indigo-700">PRK <%= project.amount  %>.00 </span>
-                                <span class="font-medium text-gray-700">$56666.00</span>
-                              </div>
-                            </a>
+                    
+                    <% let funds = 0; project.donations.length > 0 && project.donations.forEach(fund => {
+                        console.log('amount: ', fund.donation)
+                       funds += parseInt(fund.donation);
+                    }) %> 
+                  <% const current = new Date().getTime();
+                     const startDate = new Date(project.startDate).getTime();
+                     const endDate = new Date(project.endDate).getTime()
+                  %> 
+                  
+            
+                    <div class="w-full sm:w-6/12 md:w-4/12 lg:w-4/12 p-5">
+                        <div class="border rounded p-3">
+                            <a href="<%= `/project-d/${project._id}` %> ">
+                           
+                                <div class="w-full h-[200px] overflow-hidden relative">
+                                    <img src="<%= `/assets/images/${project.image}`  %> " class="w-full h-full object-cover rounded" alt="">
+                                    <% if(endDate < current) { %>
+                                        <span class="absolute top-4 right-4 bg-rose-600  text-xs px-3 py-1 text-white font-medium capitalize">over </span>
+                                    <% } else { %>
+                                        <span class="absolute top-4 right-4 bg-orange-600  text-xs px-3 py-1 text-white font-medium capitalize"><%= moment(project.endDate, "YYYYMMDD").fromNow()  %> </span>
+                                        <% } %>   
+                                    
+                                </div>
+                                <a href="<%= `/project-d/${project._id}` %> " class="text-base font-medium text-gray-800 leading-[21px] mt-3 block">
+                                   <%= project.title  %> 
+                                  </a>
+                                  <div class="mt-2 flex justify-between items-center">
+                                    <div class="w-10 h-10">
+                                        <img src="<%= `/assets/images/${project.user.photo}`  %> " alt="" class="w-full h-full object-cover rounded-full">
+                                    </div>
+                                    <span class="capitalize font-medium "><%= project.user.name  %> </span>
+                                  </div>
+                                  <span class="block mt-2 capitalize text-gray-500 text-sm font-medium"><%= project.category  %> </span>
+                                  <div class="flex justify-between mt-2">
+                                    <span>Target amount</span>
+                                    <span class="font-medium text-indigo-700">PRK <%= project.amount  %>.00 </span>
+                                   
+                                  </div>
+                                  <div class="flex justify-between mt-1">
+                                    <span>Collect amount</span>
+                                    
+                                    <span class="font-medium text-gray-700">PKR <%= funds  %>.00 </span>
+                                  </div>
+                                </a>
+                        </div>
                     </div>
+                 
+                    
+                    
                     <% }) %> 
             <% } else {  %> 
                 <p class="bg-rose-50 text-rose-900 px-4 py-2.5 rounded border-rose-100 font-medium">No projects</p>

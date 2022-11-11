@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server",
-    "compile": "npx tailwindcss -i ./views/assets/css/input.css -o ./views/assets/css/output.css --watch"
+    "server": "nodemon server",
+    "compile": "npx tailwindcss -i ./views/assets/css/input.css -o ./views/assets/css/output.css --watch",
+    "dev": "concurrently \" npm run server \" \" npm run compile \""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "concurrently": "^7.5.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^14.2.0",
     "ejs": "^3.1.6",

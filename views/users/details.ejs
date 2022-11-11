@@ -39,6 +39,26 @@
                     </span>
                 </div>
                 <div class="flex justify-between mt-2">
+                    <span class="capitalize ">collect amount</span>
+                    <span class="font-medium text-sm">
+                        <% if(project.donations.length > 0) { let funds = 0; %>
+                            <% project.donations.forEach(donation => {
+                                 funds += parseInt(donation.donation)
+                            }) %> 
+                            <%= (funds).toLocaleString('en-US', {
+                                style: 'currency',
+                                currency: 'pkr',
+                              });  %>
+                            <% } else { %>
+                                <%= (0).toLocaleString('en-US', {
+                                    style: 'currency',
+                                    currency: 'pkr',
+                                  });  %>
+                                <% } %>   
+                       
+                    </span>
+                </div>
+                <div class="flex justify-between mt-2">
                     <span class="capitalize ">status</span>
                     <span class="font-medium text-sm">
                         <% if(project.status === 0) {   %> <span class="status bg-orange-600">under review</span> <% } else if(project.status === 1) { %> <span class="status bg-emerald-600">live</span> <% } else if(project.status === 2) {%> <span class="status bg-rose-600">rejected</span> <% } %>
